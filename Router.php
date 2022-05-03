@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__.'/controllers/DashboardController.php';
-require_once __DIR__.'/controllers/ProjectsController.php';
+require_once __DIR__.'/controllers/MoviesController.php';
 
 class Router {
 
@@ -32,7 +32,7 @@ class Router {
 
         $controller = self::$routes[$action];
         $object = new $controller;
-        $action = $action ?: 'index';
+        $action = $action ?: 'movies';
         $id = $urlParts[1] ?? '';
 
         $object->$action($id);

@@ -2,7 +2,7 @@
 
 class AppController {
 
-    public function render(string $filename = 'index', array $variables = []) {
+    public function render(string $filename = 'login', array $variables = []) {
        $filepath = 'public/views/'.$filename.'.html';
        $output = "Page not found.";
 

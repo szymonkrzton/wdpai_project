@@ -14,4 +14,8 @@ class DashboardController extends AppController {
         $hi = 'Welcome on Main page!';
         return $this->render('index', ['greetings' => $hi]);
     }
+
+    public function login() {
+        return $this->render('login');
+    }
 }
