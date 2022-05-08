@@ -1,7 +1,8 @@
 <?php
 
 require_once __DIR__.'/controllers/DashboardController.php';
-require_once __DIR__.'/controllers/MoviesController.php';
+require_once __DIR__.'/controllers/SecurityController.php';
+
 
 class Router {
 
@@ -12,15 +13,13 @@ class Router {
         self::$routes[$url] = $view;
     }
 
-    static public function run(string $path) {
-       
-        // if($path === 'dashboard') {
-        //     $object = new DashboardController;
-        //     $object->$path();
-        // }
+    public static function post($url, $view)
+    {
+        self::$routes[$url] = $view;
+    }
 
-        // projects         projects
-        // projects/456     projects    456
+    static public function run(string $path) {
+
 
         $urlParts = explode("/", $path);
         $action = $urlParts[0];
@@ -32,7 +31,7 @@ class Router {
 
         $controller = self::$routes[$action];
         $object = new $controller;
-        $action = $action ?: 'movies';
+        $action = $action ?: 'index';
         $id = $urlParts[1] ?? '';
 
         $object->$action($id);
