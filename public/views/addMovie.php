@@ -20,14 +20,23 @@
             </div>
         </header>
         <div class="add-movie">
-            <form class="add-movie-form">
-                <p class="add-movie-p">Zmień e-mail</p>
-                <input name="email" type="text" placeholder="podaj tytuł">
+            <form class="add-movie-form" action="addMovie" method="POST" enctype="multipart/form-data">
+                <div class="messages">
+                    <?php
+                        if(isset($messages)){
+                            foreach ($messages as $message){
+                                echo $message;
+                            }
+                        }
+                    ?>
+                </div>
+                <p class="add-movie-p">Tytuł</p>
+                <input name="movie-title" type="text" placeholder="podaj tytuł">
                 <p class="add-movie-p">Opis</p>
                 <textarea name="movie-description" rows="4" cols="50" placeholder="podaj opis filmu"></textarea>
-                <p class="add-movie-p">Zmień hasło</p>
-                <input name="add-img" type="file" accept="image/png, image/jpeg, image/jpg">
-                <button id="add-movie-button">dodaj</button>
+                <p class="add-movie-p">Dodaj zdjęcie</p>
+                <input type="file" name="file">
+                <button type='submit' id="add-movie-button">dodaj</button>
             </form>
         </div>
     </main>

@@ -27,76 +27,10 @@
         </header>
         <section class="movies">
             <div id="movie-1">
-                <img src="public/img/uploads/road2.jpg">
+                <img src="public/img/uploads/<?= $movie->getImg() ?>">
                 <div>
-                    <h2>title</h2>
-                    <p>description</p>
-                    <div class="ratings">
-                        <i class="fa-solid fa-thumbs-up"> 156</i>
-                        <i class="fa-solid fa-thumbs-down"> 25</i>
-                    </div>
-                </div>
-            </div>
-            <div id="movie-1">
-                <img src="public/img/uploads/road2.jpg">
-                <div>
-                    <h2>title</h2>
-                    <p>description</p>
-                    <div class="ratings">
-                        <i class="fa-solid fa-thumbs-up"> 156</i>
-                        <i class="fa-solid fa-thumbs-down"> 25</i>
-                    </div>
-                </div>
-            </div>
-            <div id="movie-1">
-                <img src="public/img/uploads/road2.jpg">
-                <div>
-                    <h2>title</h2>
-                    <p>description</p>
-                    <div class="ratings">
-                        <i class="fa-solid fa-thumbs-up"> 156</i>
-                        <i class="fa-solid fa-thumbs-down"> 25</i>
-                    </div>
-                </div>
-            </div>
-            <div id="movie-1">
-                <img src="public/img/uploads/road2.jpg">
-                <div>
-                    <h2>title</h2>
-                    <p>description</p>
-                    <div class="ratings">
-                        <i class="fa-solid fa-thumbs-up"> 156</i>
-                        <i class="fa-solid fa-thumbs-down"> 25</i>
-                    </div>
-                </div>
-            </div>
-            <div id="movie-1">
-                <img src="public/img/uploads/road2.jpg">
-                <div>
-                    <h2>title</h2>
-                    <p>description</p>
-                    <div class="ratings">
-                        <i class="fa-solid fa-thumbs-up"> 156</i>
-                        <i class="fa-solid fa-thumbs-down"> 25</i>
-                    </div>
-                </div>
-            </div>
-            <div id="movie-1">
-                <img src="public/img/uploads/road2.jpg">
-                <div>
-                    <h2>title</h2>
-                    <p>description</p>
-                    <div class="ratings">
-                        <i class="fa-solid fa-thumbs-up"> 156</i>
-                        <i class="fa-solid fa-thumbs-down"> 25</i>
-                    </div>
-                </div>
-            </div>
-            <div id="movie-1">
-                <img src="public/img/uploads/road2.jpg">
-                <div>
-                    <h2>title</h2>
-                    <p>description</p>
+                    <h2><?= $movie->getTitle() ?></h2>
+                    <p><?= $movie->getDescription() ?></p>
                     <div class="ratings">
                         <i class="fa-solid fa-thumbs-up"> 156</i>
                         <i class="fa-solid fa-thumbs-down"> 25</i>

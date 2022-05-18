@@ -20,7 +20,7 @@ class SecurityController extends AppController
         }
 
         if($user->getPassword() !== $password) {
-            return $this->render('login', ['messages' => ['Wrong password']]);
+            return $this->render('login', ['messages' => ['Wrong password!']]);
         }
 
         return $this->render('movies');
