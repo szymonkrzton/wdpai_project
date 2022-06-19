@@ -31,11 +31,9 @@ class MovieRepository extends Repository
             INSERT INTO movies (id_user, title, description, img) VALUES (?, ?, ?, ?)
         ');
 
-        //TODO GET USER ID FROM SESSION
 
-        $id_user = 1;
         $stmt->execute([
-            $id_user,
+            $_SESSION['id'],
             $movie->getTitle(),
             $movie->getDescription(),
             $movie->getImg()

@@ -26,7 +26,6 @@ class Router {
         $action = $urlParts[0];
 
         if (!array_key_exists($action, self::$routes)) {
-            // TODO render index page
             die("Wrong url!");
         }
 
