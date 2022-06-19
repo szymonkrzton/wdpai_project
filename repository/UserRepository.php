@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 require_once 'Repository.php';
 require_once __DIR__.'/../models/User.php';
@@ -19,13 +18,13 @@ class UserRepository extends Repository
 
         if(!$user) return null;
 
-        $_SESSION['id'] = $user['id'];
-
         return new User(
+            $user['id'],
             $user['email'],
             $user['password'],
             $user['name'],
-            $user['surname']
+            $user['surname'],
+            $user['id_permission']
         );
     }
 }
