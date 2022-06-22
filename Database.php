@@ -31,7 +31,7 @@ class Database
             return $conn;
 
         } catch(PDOException $error) {
-            die("Connection failed: ".$error);
+            die("Connection failed: ".$error->getMessage());
         }
     }
 

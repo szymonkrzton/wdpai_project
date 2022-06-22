@@ -18,17 +18,29 @@ class MovieController extends AppController {
         $this->movieRepository = new MovieRepository();
     }
 
+    public function movies() {
+//        session_start();
+//        if(!$_SESSION['logged']) {
+//            header('Location: /');
+//        }
+        $movies = $this->movieRepository->getMovies();
+        $this->render('movies', ['movies' => $movies]);
+    }
+
 
     public function addMovie() {
-        session_start();
-        if(!$_SESSION['logged']) {
-            header('Location: /');
-        }
+//        session_start();
+//        if(!$_SESSION['logged']) {
+//            header('Location: /');
+//        }
         if($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
             move_uploaded_file($_FILES['file']['tmp_name'], dirname(__DIR__).self::UPLOAD.$_FILES['file']['name']);
             $movie = new Movie($_POST['movie-title'], $_POST['movie-description'], $_FILES['file']['name']);
             $this->movieRepository->addMovie($movie);
-            return $this->render('movies', ['messages' => $this->message, 'movie' => $movie]);
+            return $this->render('movies', [
+                'movies' => $this->movieRepository->getMovies(),
+                'messages' => $this->message
+            ]);
         }
         return $this->render('addMovie', ['messages' => $this->message]);
     }

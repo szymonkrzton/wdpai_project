@@ -20,13 +20,22 @@
             </div>
         </header>
         <div class="manage-account">
-            <form class="manage-account-form">
+            <form class="manage-account-form" action="account" method="post">
+                <div class="messages">
+                    <?php
+                    if(isset($messages)){
+                        foreach ($messages as $message){
+                            echo $message;
+                        }
+                    }
+                    ?>
+                </div>
                 <p class="manage-account-p">Zmień e-mail</p>
                 <input name="email" type="text" placeholder="email">
-                <button id="email-change-button">zmień</button>
+                <button id="email-change-button" type="submit" name="mail">zmień</button>
                 <p class="manage-account-p">Zmień hasło</p>
                 <input name="password" type="password" placeholder="password">
-                <button id="password-change-button">zmień</button>
+                <button id="password-change-button" type="submit" name="pass">zmień</button>
             </form>
         </div>
     </main>

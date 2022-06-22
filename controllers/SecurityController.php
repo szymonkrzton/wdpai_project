@@ -7,10 +7,9 @@ require_once __DIR__.'/../repository/UserRepository.php';
 class SecurityController extends AppController
 {
     public function login(){
-        session_start();
-        if($_SESSION['logged']) {
-            header('Location: /movies');
-        }
+//        if($_SESSION['logged']) {
+//            header('Location: /movies');
+//        }
 
         $userRepository = new UserRepository();
 
@@ -43,5 +42,55 @@ class SecurityController extends AppController
         $_SESSION['logged'] = true;
 
         return $this->render('movies');
+    }
+
+    public function register(){
+        if(!$this->isPost()){
+            return $this->register('register');
+        }
+
+        $email = $_POST["email"];
+        $password = $_POST["password"];
+        $confirmedPassword = $_POST['confirmedPassword'];
+        $name = $_POST['name'];
+        $surname = $_POST['surname'];
+
+        if ($password !== $confirmedPassword) {
+            return $this->render('register', ['messages' => ['Please provide proper password']]);
+        }
+
+        $user = new User($email, sha1($password), $name, $surname);
+
+        $this->userRepository->addUser($user);
+
+        return $this->render('login', ['messages' => ['You\'ve been succesfully registrated!']]);
+    }
+
+    public function account(){
+        if(!$this->isPost()){
+            return $this->account('account');
+        }
+
+        if(isset($_POST['mail']))
+        {
+            $email = $_POST["email"];
+            $this->userRepository->updateMail($email);
+
+            return $this->render('account', ['messages' => ['Your email has been updated']]);
+        } else {
+            return $this->render('account', ['messages' => ['Please provide email']]);
+        }
+
+        if(isset($_POST['pass']))
+        {
+            $password = $_POST["password"];
+            $this->userRepository->updatePassword($password);
+
+            return $this->render('account', ['messages' => ['Your password has been updated']]);
+        } else {
+            return $this->render('account', ['messages' => ['Please provide password']]);
+        }
+
+
     }
 }

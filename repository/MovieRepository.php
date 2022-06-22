@@ -31,12 +31,36 @@ class MovieRepository extends Repository
             INSERT INTO movies (id_user, title, description, img) VALUES (?, ?, ?, ?)
         ');
 
+//TODO ID FROM SESSION
+        $id = 1;
 
         $stmt->execute([
-            $_SESSION['id'],
+//            $_SESSION['id'],
+            $id,
             $movie->getTitle(),
             $movie->getDescription(),
             $movie->getImg()
         ]);
+    }
+
+    public function getMovies(): array
+    {
+        $result = [];
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM movies
+        ');
+        $stmt->execute();
+        $movies = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($movies as $movie) {
+            $result[] = new Movie(
+                $movie['title'],
+                $movie['description'],
+                $movie['img']
+            );
+        }
+
+        return $result;
     }
 }

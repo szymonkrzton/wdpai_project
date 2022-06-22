@@ -26,6 +26,7 @@
             </div>
         </header>
         <section class="movies">
+            <?php foreach ($movies as $movie): ?>
             <div id="movie-1">
                 <img src="public/img/uploads/<?= $movie->getImg() ?>">
                 <div>
@@ -37,6 +38,7 @@
                     </div>
                 </div>
             </div>
+            <?php endforeach; ?>
         </section>
     </main>
 </body>
