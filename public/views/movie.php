@@ -14,10 +14,17 @@
     <main>
         <header>
             <div class="return-button">
-                <a href="#" class="fa-solid fa-arrow-left"></a>
+                <a href="movies" class="fa-solid fa-arrow-left"></a>
             </div>
             <div class="buttons">
-                <a href="#" class="fa-solid fa-user"></a>
+                <?php
+                if($_SESSION['id_permission'] == 1):
+                    ?>
+                    <a href="addMovie" class="fa-solid fa-plus"></a>
+                <?php
+                endif;
+                ?>
+                <a href="account" class="fa-solid fa-user"></a>
                 <a href="#" class="fa-solid fa-arrow-right-from-bracket"></a>
             </div>
         </header>

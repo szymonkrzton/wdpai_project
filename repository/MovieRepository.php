@@ -48,7 +48,7 @@ class MovieRepository extends Repository
         $result = [];
 
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM movies
+            SELECT * FROM movies ORDER BY id
         ');
         $stmt->execute();
         $movies = $stmt->fetchAll(PDO::FETCH_ASSOC);

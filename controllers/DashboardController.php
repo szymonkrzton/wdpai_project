@@ -5,11 +5,11 @@ require_once 'AppController.php';
 class DashboardController extends AppController {
 
     public function index() {
-//        session_start();
-//        if($_SESSION['logged']) {
-//            header('Location: /movies');
-//        }
-//        $_SESSION['logged'] = false;
-        return $this->render('login');
-    }
+        session_start();
+        if (isset($_SESSION['logged'])) {
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/movies");
+        }
+            $this->render('login');
+        }
 }

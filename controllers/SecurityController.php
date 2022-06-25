@@ -6,16 +6,29 @@ require_once __DIR__.'/../repository/UserRepository.php';
 
 class SecurityController extends AppController
 {
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->userRepository = new UserRepository();
+    }
+
     public function login(){
-//        if($_SESSION['logged']) {
-//            header('Location: /movies');
-//        }
+        session_start();
 
         $userRepository = new UserRepository();
 
-        if(!$this->isPost()){
-            return $this->login('login');
+        if (isset($_SESSION['logged'])) {
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/movies");
         }
+
+
+        if(!$this->isPost()){
+            return $this->render('login');
+        }
+
+
 
         $email = $_POST["email"];
         $password = $_POST["password"];
@@ -30,9 +43,10 @@ class SecurityController extends AppController
             return $this->render('login', ['messages' => ['User with this email not exist']]);
         }
 
-        if($user->getPassword() !== $password) {
+        if($user->getPassword() !== sha1($password)) {
             return $this->render('login', ['messages' => ['Wrong password!']]);
         }
+
 
         $_SESSION['id'] = $user->getId();
         $_SESSION['email'] = $user->getEmail();
@@ -41,12 +55,23 @@ class SecurityController extends AppController
         $_SESSION['id_permission'] = $user->getIdPermission();
         $_SESSION['logged'] = true;
 
-        return $this->render('movies');
+        //setcookie('permission', $user->getIdPermission(), time() + (86400 * 30), "/");
+
+//        return $this->render('movies');
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/movies");
     }
 
     public function register(){
+
+        session_start();
+        if (isset($_SESSION['logged'])) {
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/movies");
+        }
+
         if(!$this->isPost()){
-            return $this->register('register');
+            return $this->render('register');
         }
 
         $email = $_POST["email"];
@@ -54,12 +79,14 @@ class SecurityController extends AppController
         $confirmedPassword = $_POST['confirmedPassword'];
         $name = $_POST['name'];
         $surname = $_POST['surname'];
+        $phone = $_POST['phone'];
 
         if ($password !== $confirmedPassword) {
             return $this->render('register', ['messages' => ['Please provide proper password']]);
         }
 
         $user = new User($email, sha1($password), $name, $surname);
+        $user->setPhone($phone);
 
         $this->userRepository->addUser($user);
 
@@ -68,7 +95,7 @@ class SecurityController extends AppController
 
     public function account(){
         if(!$this->isPost()){
-            return $this->account('account');
+            return $this->render('account');
         }
 
         if(isset($_POST['mail']))
@@ -91,6 +118,17 @@ class SecurityController extends AppController
             return $this->render('account', ['messages' => ['Please provide password']]);
         }
 
+    }
 
+    public function logout()
+    {
+        $url = "http://$_SERVER[HTTP_HOST]";
+        if (!$this->isGet()) {
+            header("Location: {$url}/login");
+            return;
+        }
+        session_start();
+        session_destroy();
+        header("Location: {$url}/login");
     }
 }

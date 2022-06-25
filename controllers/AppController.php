@@ -18,17 +18,23 @@ class AppController {
     }
 
     protected function render(string $filename = null, array $variables = []) {
-       $filepath = 'public/views/'.$filename.'.php';
-       $output = "Page not found.";
 
-       if(file_exists($filepath)) {
+        session_start();
+        if((isset($_SESSION['logged']) && $_SESSION['id_permission'] == 1 && $filename == 'addMovie') || (($filename == 'login' || $filename == 'register' || $_SESSION['logged']) && $filename != 'addMovie')){
+            $filepath = 'public/views/'.$filename.'.php';
+            $output = "Page not found.";
 
-            extract($variables);
-            
-            ob_start();
-            include $filepath;
-            $output = ob_get_clean();
-       }
-       print $output;
+            if(file_exists($filepath)) {
+
+                extract($variables);
+
+                ob_start();
+                include $filepath;
+                $output = ob_get_clean();
+            }
+            print $output;
+        } else {
+            echo "You have no permission to visit this page.";
+        }
     }
 }

@@ -2,31 +2,23 @@
 
 class User
 {
-    private $id;
     private $email;
     private $password;
     private $name;
     private $surname;
+    private $phone;
+    private $id;
     private $id_permission;
 
-    public function __construct(int $id, string $email, string $password, string $name, string $surname, int $id_permission)
+    public function __construct(string $email, string $password, string $name, string $surname, string $phone, int $id = null, int $id_permission = null)
     {
-        $this->id = $id;
         $this->email = $email;
         $this->password = $password;
         $this->name = $name;
         $this->surname = $surname;
-        $this->id_permission = $id_permission;
-    }
-
-    public function getId(): int
-    {
-        return $this->id;
-    }
-
-    public function setId(int $id)
-    {
+        $this->phone = $phone;
         $this->id = $id;
+        $this->id_permission = $id_permission;
     }
 
     public function getEmail(): string
@@ -67,6 +59,26 @@ class User
     public function setSurname(string $surname)
     {
         $this->surname = $surname;
+    }
+
+    public function getPhone(): int
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(int $phone)
+    {
+        $this->phone = $phone;
+    }
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    public function setId(int $id)
+    {
+        $this->id = $id;
     }
 
     public function getIdPermission(): int
