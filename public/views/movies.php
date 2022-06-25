@@ -22,6 +22,7 @@
 
             </div>
             <div class="buttons">
+                <a href="movies" class="fa-solid fa-house-chimney"></a>
                 <?php
                 if($_SESSION['id_permission'] == 1):
                 ?>

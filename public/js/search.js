@@ -37,7 +37,7 @@ function createMovie(movie) {
     const div = clone.querySelector("div");
     div.id = movie.id;
     const image = clone.querySelector("img");
-    image.src = `public/img/uploads/${movie.image}`;
+    image.src = `/public/img/uploads/${movie.image}`;
     const title = clone.querySelector("h2");
     title.innerHTML = movie.title;
     const description = clone.querySelector("p");

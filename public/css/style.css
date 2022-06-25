@@ -73,6 +73,8 @@ header {
 a {
     text-decoration: none;
     color: black;
+    font-size: 1.75em;
+    margin-left: 1em;
 }
 
 .search {
@@ -112,11 +114,6 @@ a {
 
 .buttons-account > a {
     color: #2C4247;
-}
-
-a {
-    font-size: 2em;
-    margin-left: 1em;
 }
 
 .main-logo-account > img {
@@ -218,6 +215,16 @@ textarea {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+
+    textarea {
+        width: 80%;
+    }
+
+    a {
+        font-size: 1.25em;
+        margin-left: 1em;
+        margin-top: 0.25em;
     }
 }
 
