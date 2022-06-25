@@ -128,6 +128,12 @@ class SecurityController extends AppController
             return;
         }
         session_start();
+        unset($_SESSION['id']);
+        unset($_SESSION['email']);
+        unset($_SESSION['name']);
+        unset($_SESSION['surname']);
+        unset($_SESSION['id_permission']);
+        unset($_SESSION['logged']);
         session_destroy();
         header("Location: {$url}/login");
     }

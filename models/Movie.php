@@ -4,59 +4,77 @@ class Movie {
     private $title;
     private $description;
     private $img;
+    private $like;
+    private $dislike;
+    private $id;
 
-    public function __construct($title, $description, $img){
-        $this->title=$title;
-        $this->description=$description;
-        $this->img=$img;
+    public function __construct($title, $description, $img, $like = 0, $dislike = 0, $id = null){
+        $this->title = $title;
+        $this->description = $description;
+        $this->img = $img;
+        $this->like = $like;
+        $this->dislike = $dislike;
+        $this->id = $id;
     }
 
-    /**
-     * @return mixed
-     */
     public function getTitle()
     {
         return $this->title;
     }
 
-    /**
-     * @param mixed $title
-     */
     public function setTitle($title)
     {
         $this->title = $title;
     }
 
-    /**
-     * @return mixed
-     */
     public function getDescription()
     {
         return $this->description;
     }
 
-    /**
-     * @param mixed $description
-     */
     public function setDescription($description)
     {
         $this->description = $description;
     }
 
-    /**
-     * @return mixed
-     */
     public function getImg()
     {
         return $this->img;
     }
 
-    /**
-     * @param mixed $img
-     */
     public function setImg($img)
     {
         $this->img = $img;
+    }
+
+    public function getLike()
+    {
+        return $this->like;
+    }
+
+    public function setLike($like)
+    {
+        $this->like = $like;
+    }
+
+    public function getDislike()
+    {
+        return $this->dislike;
+    }
+
+    public function setDislike($dislike)
+    {
+        $this->dislike = $dislike;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 
 

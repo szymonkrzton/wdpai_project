@@ -12,9 +12,7 @@
     <main>
         <header>
             <div class="main-logo">
-                <a href="movies">
                     <img src="public/img/logo.svg">
-                </a>
             </div>
             <div class="buttons-account">
                 <?php

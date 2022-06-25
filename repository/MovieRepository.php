@@ -57,10 +57,44 @@ class MovieRepository extends Repository
             $result[] = new Movie(
                 $movie['title'],
                 $movie['description'],
-                $movie['img']
+                $movie['img'],
+                $movie['like'],
+                $movie['dislike'],
+                $movie['id']
             );
         }
 
         return $result;
+    }
+
+    public function like(int $id) {
+        $stmt = $this->database->connect()->prepare('
+            UPDATE movies SET "like" = "like" + 1 WHERE id = :id
+        ');
+
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
+    public function dislike(int $id) {
+        $stmt = $this->database->connect()->prepare('
+            UPDATE movies SET dislike = dislike + 1 WHERE id = :id
+        ');
+
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
+    public function getMovieByTitle(string $searchString){
+        $searchString = '%'.strtolower($searchString).'%';
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM movies WHERE LOWER(title) LIKE :search OR LOWER(description) LIKE :search
+        ');
+
+        $stmt->bindParam(':search', $searchString, PDO::PARAM_STR);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

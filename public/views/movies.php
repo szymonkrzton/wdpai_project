@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <link rel="stylesheet" type="text/css" href="public/css/movies.css">
     <script src="https://kit.fontawesome.com/d61971956d.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./public/js/search.js" defer></script>
     <title>MOVIES</title>
 </head>
 
@@ -13,14 +14,12 @@
     <main>
         <header>
             <div class="main-logo">
-                <a href="movies">
                 <img src="public/img/logo.svg">
-                </a>
             </div>
             <div class="search">
-                <form>
+
                     <input placeholder="search movie">
-                </form>
+
             </div>
             <div class="buttons">
                 <?php
@@ -31,19 +30,20 @@
                 endif;
                 ?>
                 <a href="account" class="fa-solid fa-user"></a>
-                <a href="#" class="fa-solid fa-arrow-right-from-bracket"></a>
+                <a href="logout" class="fa-solid fa-arrow-right-from-bracket"></a>
             </div>
         </header>
         <section class="movies">
             <?php foreach ($movies as $movie): ?>
-            <div id="movie-1">
+
+            <div id="<?= $movie->getId() ?>">
                 <img src="public/img/uploads/<?= $movie->getImg() ?>">
                 <div>
                     <h2><?= $movie->getTitle() ?></h2>
                     <p><?= $movie->getDescription() ?></p>
                     <div class="ratings">
-                        <i class="fa-solid fa-thumbs-up"> 156</i>
-                        <i class="fa-solid fa-thumbs-down"> 25</i>
+                        <i class="fa-solid fa-thumbs-up"><?= $movie->getLike() ?></i>
+                        <i class="fa-solid fa-thumbs-down"><?= $movie->getDislike() ?></i>
                     </div>
                 </div>
             </div>
@@ -53,3 +53,17 @@
 </body>
 
 </html>
+
+<template id="movie-template">
+    <div id="">
+        <img src="">
+        <div>
+            <h2>title</h2>
+            <p>description</p>
+            <div class="ratings">
+                <i class="fa-solid fa-thumbs-up">0</i>
+                <i class="fa-solid fa-thumbs-down">0</i>
+            </div>
+        </div>
+    </div>
+</template>

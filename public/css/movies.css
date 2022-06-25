@@ -14,7 +14,7 @@ section {
 
 .movies > div > div {
     height: 40%;
-    background-color: white;
+
     color: #2C4247;
     display: flex;
     flex-direction: column;
@@ -34,6 +34,10 @@ section {
 
 .ratings > i {
     margin-right: 0.75em;
+}
+
+.ratings > i:hover {
+    cursor: pointer;
 }
 
 @media only screen and (max-device-width: 420px){

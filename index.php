@@ -10,6 +10,10 @@ Router::post('login', 'SecurityController');
 Router::post('addMovie', 'MovieController');
 Router::post('register', 'SecurityController');
 Router::post('account', 'SecurityController');
+Router::post('logout', 'SecurityController');
+Router::get('like', 'MovieController');
+Router::get('dislike', 'MovieController');
+Router::post('search', 'MovieController');
 
 
 
