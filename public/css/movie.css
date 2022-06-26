@@ -1,23 +1,32 @@
-a {
-    color: white;
+body {
+    background: #EDF1EB 0% 0% no-repeat padding-box
 }
 
-.return-button {
-    padding-top: 1em;
+.buttons {
+    margin-right: 3em;
+}
+
+a {
+    color: black;
 }
 
 header {
     height: 30vh;
-    background-image: url("../img/uploads/road2.jpg");
+    justify-content: flex-end;
     background-color: black;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
 }
 
 .description {
     text-align: center;
     color: #2C4247;
+    margin-top: 35vh;
 }
 
 .content {
@@ -30,14 +39,9 @@ h1 {
     font: normal normal bold 60px/17px Calibri;
 }
 
-.ratings {
-    margin-bottom: 1em;
-    margin-left: 0.5em;
-    font-size: 0.75em;
-}
-
 p {
     font: normal normal normal 20px/17px Calibri;
+    line-height: 1.2;
 }
 
 @media only screen and (max-device-width: 420px){

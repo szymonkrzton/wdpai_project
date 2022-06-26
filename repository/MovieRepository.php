@@ -30,12 +30,10 @@ class MovieRepository extends Repository
         $stmt = $this->database->connect()->prepare('
             INSERT INTO movies (id_user, title, description, img) VALUES (?, ?, ?, ?)
         ');
-
-//TODO ID FROM SESSION
-        $id = 1;
+session_start();
+        $id = $_SESSION['id'];
 
         $stmt->execute([
-//            $_SESSION['id'],
             $id,
             $movie->getTitle(),
             $movie->getDescription(),
@@ -88,8 +86,9 @@ class MovieRepository extends Repository
     public function getMovieByTitle(string $searchString){
         $searchString = '%'.strtolower($searchString).'%';
 
+
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM movies WHERE LOWER(title) LIKE :search OR LOWER(description) LIKE :search
+            SELECT * FROM movies WHERE LOWER(title) LIKE :search OR LOWER(description) LIKE :search ORDER BY id
         ');
 
         $stmt->bindParam(':search', $searchString, PDO::PARAM_STR);

@@ -69,32 +69,20 @@ class UserRepository extends Repository
         return $data['id'];
     }
 
-    public function updateMail(string $email)
+    public function updateInfo(string $email, string $password)
     {
         $stmt = $this->database->connect()->prepare('
-            UPDATE users SET email = :email WHERE id = :id
+            UPDATE users SET email = :email, password = :password WHERE id = :id
         ');
-//TODO ID FROM SESSION
+
         session_start();
         $id = $_SESSION['id'];
 
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-
-        $stmt->execute();
-    }
-
-    public function updatePassword(string $password)
-    {
-        $stmt = $this->database->connect()->prepare('
-            UPDATE users SET password = :password WHERE id = :id
-        ');
-//TODO ID FROM SESSION
-        $id = $_SESSION['id'];
-
         $stmt->bindParam(':password', $password, PDO::PARAM_STR);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
         $stmt->execute();
     }
+
 }

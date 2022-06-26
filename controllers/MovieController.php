@@ -23,6 +23,11 @@ class MovieController extends AppController {
         $this->render('movies', ['movies' => $movies]);
     }
 
+    public function movie() {
+        $movie = $this->movieRepository->getMovie($_GET['_id']);
+        $this->render('movie', ['movie' => $movie]);
+    }
+
 
     public function addMovie() {
         if($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {

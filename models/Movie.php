@@ -32,6 +32,10 @@ class Movie {
         return $this->description;
     }
 
+    public function getTruncatedDescription(int $len = 10) {
+        return mb_strimwidth($this->description, 0, $len, "...");
+    }
+
     public function setDescription($description)
     {
         $this->description = $description;

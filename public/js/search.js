@@ -2,7 +2,7 @@ const search = document.querySelector('input[placeholder="search movie"]');
 const movieContainer = document.querySelector(".movies");
 
 search.addEventListener("keyup", function (event) {
-    if(event.key === "Enter") {
+    // if(event.key === "Enter") {
         event.preventDefault();
 
         const data = {search: this.value};
@@ -19,7 +19,7 @@ search.addEventListener("keyup", function (event) {
            movieContainer.innerHTML = "";
            loadMovies(movies)
         });
-    }
+    // }
 });
 
 function loadMovies(movies) {
@@ -37,17 +37,15 @@ function createMovie(movie) {
     const div = clone.querySelector("div");
     div.id = movie.id;
     const image = clone.querySelector("img");
-    image.src = `/public/img/uploads/${movie.image}`;
+    image.src = `/public/img/uploads/${movie.img}`;
     const title = clone.querySelector("h2");
     title.innerHTML = movie.title;
     const description = clone.querySelector("p");
-    description.innerHTML = movie.description;
+    description.innerHTML = movie.description.slice(0, 100) + "...";
     const like = clone.querySelector(".fa-thumbs-up");
-    like.innerText = movie.like;
+    like.innerText = ' '+movie.like;
     const dislike = clone.querySelector(".fa-thumbs-down");
-    dislike.innerText = movie.dislike;
+    dislike.innerText = ' '+movie.dislike;
 
     movieContainer.appendChild(clone);
 }
-
-//TODO FIX IMAGE IN SEARCH

@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(E_ERROR | E_PARSE);
 require 'Router.php';
 
 $path = trim($_SERVER['REQUEST_URI'], '/');
@@ -14,6 +14,7 @@ Router::post('logout', 'SecurityController');
 Router::get('like', 'MovieController');
 Router::get('dislike', 'MovieController');
 Router::post('search', 'MovieController');
+Router::get('movie', 'MovieController');
 
 
 

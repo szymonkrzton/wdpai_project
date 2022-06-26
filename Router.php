@@ -23,7 +23,7 @@ class Router {
 
 
         $urlParts = explode("/", $path);
-        $action = $urlParts[0];
+        $action = explode('?', $urlParts[0])[0];
 
         if (!array_key_exists($action, self::$routes)) {
             die("Wrong url!");

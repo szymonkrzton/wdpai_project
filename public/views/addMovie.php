@@ -14,7 +14,7 @@
             <div class="main-logo">
                     <img src="public/img/logo.svg">
             </div>
-            <div class="buttons-account">
+            <div class="buttons">
                 <a href="movies" class="fa-solid fa-house-chimney"></a>
                 <?php
                 if($_SESSION['id_permission'] == 1):
@@ -24,7 +24,7 @@
                 endif;
                 ?>
                 <a href="account" class="fa-solid fa-user"></a>
-                <a href="#" class="fa-solid fa-arrow-right-from-bracket"></a>
+                <a href="logout" class="fa-solid fa-arrow-right-from-bracket"></a>
             </div>
         </header>
         <div class="add-movie">

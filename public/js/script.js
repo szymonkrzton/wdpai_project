@@ -1,7 +1,7 @@
 const form = document.querySelector("form");
 
 const emailInput = form.querySelector('input[name="email"]');
-const passwordInput = form.querySelector('input[name="password"]');
+
 const confirmedPasswordInput = form.querySelector('input[name="confirmedPassword"]');
 
 function isEmail(email) {

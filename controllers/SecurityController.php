@@ -98,24 +98,15 @@ class SecurityController extends AppController
             return $this->render('account');
         }
 
-        if(isset($_POST['mail']))
+        if(isset($_POST['email']) && isset($_POST['password']))
         {
             $email = $_POST["email"];
-            $this->userRepository->updateMail($email);
-
-            return $this->render('account', ['messages' => ['Your email has been updated']]);
-        } else {
-            return $this->render('account', ['messages' => ['Please provide email']]);
-        }
-
-        if(isset($_POST['pass']))
-        {
             $password = $_POST["password"];
-            $this->userRepository->updatePassword($password);
+            $this->userRepository->updateInfo($email, sha1($password));
 
-            return $this->render('account', ['messages' => ['Your password has been updated']]);
-        } else {
-            return $this->render('account', ['messages' => ['Please provide password']]);
+            return $this->render('account', ['messages' => ['Your details has been updated']]);
+        } else{
+            return $this->render('account', ['messages' => ['Please provide all details']]);
         }
 
     }
