@@ -1,0 +1,261 @@
+body {
+    margin: 0;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    background: #EDF1EB 0% 0% no-repeat padding-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    width: 100%;
+    text-align: center;
+}
+
+img.login-img {
+    width: 27%;
+    margin: 1em auto;
+}
+
+.login-container {
+    width: 100%;
+}
+
+form.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#login-button {
+    background: #2C4247 0% 0% no-repeat padding-box;
+    border-radius: 2em;
+    font: normal normal normal 20px/27px Segoe UI;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    border: none;
+    margin: 0.25em;
+    line-height: 2em;
+    text-align: center;
+    width: 8%;
+}
+
+input {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 3px solid #2C4247;
+    border-radius: 2em;
+    margin: 0.25em;
+    line-height: 2em;
+    width: 20%;
+    text-align: center;
+    font: normal normal normal 20px/27px Segoe UI;
+}
+
+main {
+        height: 100vh;
+        background: #EDF1EB 0% 0% no-repeat padding-box;
+        display: flex;
+        flex-direction: column;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em 2em;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.75em;
+    margin-left: 1em;
+}
+
+.search {
+    width: 40%;
+    text-align: center;
+    margin-top: 1em;
+}
+
+.search > input {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 2px solid #2C4247;
+    border-radius: 1.5em;
+    width: 60%;
+    text-align: center;
+    margin: 0;
+    box-sizing: border-box;
+    line-height: 2em;
+}
+
+.main-logo, .buttons {
+    width: 30%;
+}
+
+.main-logo > img {
+    width: 50%;
+}
+
+.buttons {
+    text-align: right;
+    padding-top: 1em;
+}
+
+.main-logo-account > img {
+    width: 20%;
+}
+
+.main-logo-account {
+    text-align: left;
+    width: 65%;
+}
+
+.manage-account-form {
+    display: flex;
+    flex-direction: column;
+    padding-top: 4em;
+    text-align: center;
+    align-items: center;
+}
+
+#add-movie-button {
+    background: #2C4247 0% 0% no-repeat padding-box;
+    border-radius: 2em;
+    font: normal normal normal 20px/27px Segoe UI;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    border: none;
+    margin: 0.25em;
+    line-height: 1.75em;
+    text-align: center;
+    width: 8%;
+}
+
+#add-movie-button {
+    width: 20%;
+}
+
+.manage-account-p, .add-movie-p {
+    font: normal normal normal 20px/27px Segoe UI;
+    margin-bottom: 0.5em;
+}
+
+form.add-movie-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+textarea {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 3px solid #2C4247;
+    border-radius: 2em;
+    margin: 0.25em;
+    line-height: 2em;
+    width: 20%;
+    text-align: center;
+    font: normal normal normal 20px/27px Segoe UI;
+}
+
+.update {
+    background: #2C4247 0% 0% no-repeat padding-box;
+    border-radius: 2em;
+    font: normal normal normal 20px/27px Segoe UI;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    border: none;
+    margin: 0.25em;
+    line-height: 2em;
+    text-align: center;
+    width: 8%;
+}
+
+
+@media only screen and (max-device-width: 420px){
+    *{
+        font-size: 24px;
+    }
+    input {
+        width: 80%;
+        border: 4px solid #2C4247;
+    }
+
+    #login-button {
+        width: 25%;
+        height: 2.75vh;
+    }
+
+    .main-logo > img {
+        width: 100%;
+        padding-top: 0.5em;
+    }
+
+    .search > form > input {
+        width: 80%;
+    }
+
+    .manage-account-p {
+        font-size: 1.5em;
+    }
+
+    .manage-account-form > input {
+        width: 70%;
+        height: 3em;
+    }
+    
+    #email-change-button, #password-change-button {
+        width: 71%;
+        height: 3.5em;
+    }
+
+    form.manage-account-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    textarea {
+        width: 80%;
+    }
+
+    a {
+        font-size: 1.25em;
+        margin-left: 1em;
+        margin-top: 0.25em;
+    }
+    header {
+        display: block;
+    }
+
+    header > div {
+        width: 80%;
+    }
+
+    .buttons, .search, .main-logo {
+        width: 100%;
+    }
+
+    .buttons {
+        text-align: center;
+        font-size: 3em;
+    }
+
+    .buttons > a:first-child {
+        margin-left: 0;
+    }
+}
+
+.no-valid {
+    border: 2px solid red;
+    border-radius: 1em;
+    box-shadow: 0 0 0.2em red;
+    outline: none;
+}

@@ -1,0 +1,82 @@
+.movies {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-gap: 4em;
+    padding: 2em;
+    overflow: auto;
+    font: normal normal normal 18px/25px Segoe UI;
+}
+
+.img-links {
+    display: inline-block;
+    height: 300px;
+    width: 100%;
+    margin: 0;
+
+}
+
+.title-links {
+    margin: 0;
+    line-height: 1.2;
+}
+
+.movies > div > a > img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+
+}
+
+.movies > div > div {
+    height: 40%;
+
+    color: #2C4247;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 1em;
+}
+
+.movies > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+    max-width: 450px;
+}
+
+.ratings { 
+    font-size: 0.75em;
+}
+
+.ratings > i {
+    margin-right: 0.75em;
+}
+
+.ratings > i:hover {
+    cursor: pointer;
+}
+
+@media only screen and (max-device-width: 767px) {
+    .movies > div {
+        max-width: 100%;
+    }
+}
+
+@media only screen and (max-device-width: 420px){
+    .movies {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+
+    .ratings {
+        font-size: 0.25em;
+    }
+
+    .buttons {
+        font-size: 1.25em;
+    }
+
+    h2{
+        font-size: 1em;
+    }
+}
