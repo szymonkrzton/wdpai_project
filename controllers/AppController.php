@@ -34,7 +34,7 @@ class AppController {
             }
             print $output;
         } else {
-            echo "You have no permission to visit this page.";
+            $this->render('login');
         }
     }
 }
