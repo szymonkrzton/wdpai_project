@@ -28,6 +28,7 @@
                 <button id="login-button" type="submit">zaloguj</button>
 
             </form>
+            <a href="register" class="redirect-login">Załóż konto</a>
         </div>
     </div>
 </body>

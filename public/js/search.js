@@ -2,7 +2,6 @@ const search = document.querySelector('input[placeholder="search movie"]');
 const movieContainer = document.querySelector(".movies");
 
 search.addEventListener("keyup", function (event) {
-    // if(event.key === "Enter") {
         event.preventDefault();
 
         const data = {search: this.value};
@@ -19,7 +18,6 @@ search.addEventListener("keyup", function (event) {
            movieContainer.innerHTML = "";
            loadMovies(movies)
         });
-    // }
 });
 
 function loadMovies(movies) {
@@ -46,6 +44,10 @@ function createMovie(movie) {
     like.innerText = ' '+movie.like;
     const dislike = clone.querySelector(".fa-thumbs-down");
     dislike.innerText = ' '+movie.dislike;
+    const imgLink = clone.querySelector(".img-links");
+    imgLink.href = `movie?_id=${movie.id}`;
+    const titleLink = clone.querySelector(".title-links");
+    titleLink.href = `movie?_id=${movie.id}`;
 
     movieContainer.appendChild(clone);
 }

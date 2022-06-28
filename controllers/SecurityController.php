@@ -85,8 +85,7 @@ class SecurityController extends AppController
             return $this->render('register', ['messages' => ['Please provide proper password']]);
         }
 
-        $user = new User($email, sha1($password), $name, $surname);
-        $user->setPhone($phone);
+        $user = new User($email, sha1($password), $name, $surname, $phone);
 
         $this->userRepository->addUser($user);
 
@@ -104,7 +103,7 @@ class SecurityController extends AppController
             $password = $_POST["password"];
             $this->userRepository->updateInfo($email, sha1($password));
 
-            return $this->render('account', ['messages' => ['Your details has been updated']]);
+            return $this->render('account', ['messages' => ['Your details have been updated']]);
         } else{
             return $this->render('account', ['messages' => ['Please provide all details']]);
         }

@@ -33,6 +33,7 @@
             <button id="login-button" type="submit">zarejestruj</button>
 
         </form>
+        <a href="login" class="redirect-login">Zaloguj się</a>
     </div>
 </div>
 </body>

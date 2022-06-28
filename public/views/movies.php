@@ -8,6 +8,7 @@
     <script src="https://kit.fontawesome.com/d61971956d.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="./public/js/search.js" defer></script>
     <script type="text/javascript" src="./public/js/likes.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>MOVIES</title>
 </head>
@@ -49,8 +50,8 @@
                     </a>
                     <p><?= $movie->getTruncatedDescription(100) ?></p>
                     <div class="ratings">
-                        <i class="fa-solid fa-thumbs-up"> <?= $movie->getLike() ?></i>
-                        <i class="fa-solid fa-thumbs-down"> <?= $movie->getDislike() ?></i>
+                        <i class="fa-solid fa-thumbs-up like-btn"><span class="likes"> <?= $movie->getLike() ?></span></i>
+                        <i class="fa-solid fa-thumbs-down dislike-btn"><span class="dislikes"> <?= $movie->getDislike() ?></span></i>
                     </div>
                 </div>
             </div>
@@ -72,8 +73,8 @@
             </a>
             <p>description</p>
             <div class="ratings">
-                <i class="fa-solid fa-thumbs-up"> 0</i>
-                <i class="fa-solid fa-thumbs-down"> 0</i>
+                <i class="fa-solid fa-thumbs-up"><span class="likes"> 0</span></i>
+                <i class="fa-solid fa-thumbs-down"><span class="dislikes"> 0</span></i>
             </div>
         </div>
     </div>

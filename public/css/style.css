@@ -177,6 +177,23 @@ textarea {
     width: 8%;
 }
 
+.redirect-login {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    margin: 0;
+    font: normal normal normal 20px/27px Segoe UI;
+    font-size: 1em;
+}
+
+.fa-thumbs-up-2 {
+    color: greenyellow;
+}
+
+.fa-thumbs-down-2 {
+    color: red;
+}
 
 @media only screen and (max-device-width: 420px){
     *{

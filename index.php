@@ -11,10 +11,11 @@ Router::post('addMovie', 'MovieController');
 Router::post('register', 'SecurityController');
 Router::post('account', 'SecurityController');
 Router::post('logout', 'SecurityController');
-Router::get('like', 'MovieController');
-Router::get('dislike', 'MovieController');
+//Router::get('like', 'MovieController');
+//Router::get('dislike', 'MovieController');
 Router::post('search', 'MovieController');
 Router::get('movie', 'MovieController');
+Router::post('rating', 'MovieController');
 
 
 

@@ -42,15 +42,15 @@ class MovieController extends AppController {
         return $this->render('addMovie', ['messages' => $this->message]);
     }
 
-    public function like(int $id) {
-        $this->movieRepository->like($id);
-        http_response_code(200);
-    }
-
-    public function dislike(int $id) {
-        $this->movieRepository->dislike($id);
-        http_response_code(200);
-    }
+//    public function like(int $id) {
+//        $this->movieRepository->like($id);
+//        http_response_code(200);
+//    }
+//
+//    public function dislike(int $id) {
+//        $this->movieRepository->dislike($id);
+//        http_response_code(200);
+//    }
 
     public function search(){
         $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
@@ -65,6 +65,36 @@ class MovieController extends AppController {
         }
     }
 
+    public function rating() {
+        if(isset($_POST['action'])) {
+            $id_movie = $_POST['id_movie'];
+            $action = $_POST['action'];
+
+            switch($action) {
+                case 'like':
+                    $this->movieRepository->like($id_movie, $action);
+                    break;
+
+                case 'dislike':
+                    $this->movieRepository->dislike($id_movie, $action);
+                    break;
+
+                case 'unlike':
+                    $this->movieRepository->unlike($id_movie);
+                    break;
+
+                case 'undislike':
+                    $this->movieRepository->undislike($id_movie);
+                    break;
+
+                default:
+                    break;
+            }
+            echo $this->movieRepository->getRating($id_movie);
+        }
+
+    }
+
     private function validate(array $file): bool {
         if($file['size'] > self::MAX_SIZE) {
             $this->message[] = 'Plik jest zbyt duży!';
@@ -77,6 +107,5 @@ class MovieController extends AppController {
         }
         return true;
     }
-
 
 }
